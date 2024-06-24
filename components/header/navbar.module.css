@@ -1,0 +1,239 @@
+.header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 100%;
+}
+
+.navRight {
+    display: flex;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.logoImage {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    cursor: pointer;
+}
+
+.myBlog {
+    font-size: 1.3rem;
+    color: black;
+    cursor: pointer;
+
+}
+
+.nav {
+    font-size: 1rem;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    padding-right: 1rem;
+}
+
+.navUL {
+    display: flex;
+    align-items: center;
+}
+
+.navLI {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.borderBottoom {
+    padding-left: 1.3rem;
+    text-decoration: none;
+    color: black;
+
+}
+
+.borderBottoom::after {
+    position: relative;
+    display: block;
+    content: '';
+    top: .08rem;
+    border-bottom: 0.02rem solid black;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+
+}
+
+.borderBottoom:hover:after {
+    transform: scaleX(1);
+}
+
+.borderBottoom.fromRight:after {
+    transform-origin: 100% 50%;
+}
+
+.borderBottoom.fromLeft:after {
+    transform-origin: 0% 50%;
+}
+
+
+.navLeft {
+    display: flex;
+    align-items: center;
+    padding-left: 0.5rem;
+}
+
+
+@media (max-width: 425px) {
+    .nav {
+        display: none;
+    }
+
+    .logoImage {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        cursor: pointer;
+        height: 35px;
+        width: 35px;
+    }
+
+    .myBlog {
+        font-size: 1.3rem;
+        color: black;
+        cursor: pointer;
+    }
+
+    .navLeft button {
+        display: flex;
+        cursor: pointer;
+        border-radius: 7.5px;
+        border: 20px;
+        background-color: black;
+        color: white;
+        font-size: 1rem;
+        height: max-content;
+        width: max-content;
+        justify-content: center;
+        align-items: center;
+        padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+    }
+
+    .navLeft button::after {
+        content: "ورود";
+    }
+
+    .navLeft>button:nth-child(2) {
+        display: none !important;
+    }
+
+    .navLeft>button:nth-child(1)>span {
+        display: none !important;
+    }
+
+}
+
+@media only screen and (min-width: 426px) and (max-width: 768px) {
+    .nav {
+        display: none;
+        position: relative;
+    }
+
+    .logoImage {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        cursor: pointer;
+        height: 35px;
+        width: 35px;
+    }
+
+    .myBlog {
+        font-size: 1.3rem;
+        color: black;
+        cursor: pointer;
+    }
+
+    .navLeft button {
+        display: flex;
+        cursor: pointer;
+        border-radius: 7.5px;
+        border: 20px;
+        background-color: black;
+        color: white;
+        font-size: 0.8rem;
+        height: max-content;
+        width: max-content;
+        justify-content: center;
+        align-items: center;
+        padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+    }
+
+    .navLeft>button:nth-child(2) {
+        display: none !important;
+    }
+} 
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .nav {
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+
+    .borderBottoom {
+        padding-left: 0.5rem;
+        text-decoration: none;
+        color: black;
+    
+    }
+    .navLeft>button:nth-child(2) {
+        display: none !important;
+    }
+}
+
+
+@media only screen and (min-width: 1440px) {
+    .logoImage {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        cursor: pointer;
+        height: 60px;
+        width: 60px;
+    }
+    
+    .myBlog {
+        font-size: 2rem;
+        color: black;
+        cursor: pointer;
+    
+    }
+    
+    .nav {
+        font-size: 1.5rem;
+        color: black;
+        cursor: pointer;
+        display: flex;
+        padding-right: 3rem;
+    }
+
+    .navLeft button {
+        display: flex;
+        cursor: pointer;
+        border-radius: 7.5px;
+        border: 20px;
+        background-color: black;
+        color: white;
+        font-size: 1.3rem;
+        height: max-content;
+        width: max-content;
+        justify-content: center;
+        align-items: center;
+        padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+    }
+}

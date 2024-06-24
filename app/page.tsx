@@ -1,16 +1,21 @@
 import './reset.css';
+import Section from '../components/section';
 import style from './page.module.css';
-import Header from '@/components/Navbar';
-import Section from '@/components/Section';
-import Footer from '@/components/Footer';
+import { MainLayout } from './../layouts/main-layout'
+
+export const metadata = {
+  title: 'وبلاگ پژواک',
+  description: 'وبلاگ پژواک، سبک زندگی، کتاب و ادبیات، اخبار روز، بازی و سرگرمی، فرهنگ و هنر',
+}
 
 export default function Home() {
   return (
-    <div className={style.constainer}>
-      <Header />
-      <Section />
-      <Footer />
+    <div className={style.container}>
+      <MainLayout>
+        <Section />
+      </MainLayout>
     </div>
+
 
   );
 }

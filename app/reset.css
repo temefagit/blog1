@@ -107,7 +107,12 @@ section {
 }
 
 body {
+	margin: 0;
+    padding: 0;
 	line-height: 1;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 ol,
@@ -133,11 +138,10 @@ table {
 	border-spacing: 0;
 }
 
+body {
+	font-family: 'vazirmatn';
+}
 
-
-@font-face {
-	font-family: 'Vazir';
-	src: url('/public/fonts/Vazir.ttf') format('ttf');
-	font-display: swap;
-  }
-  
+button {
+	font-family: inherit
+}
