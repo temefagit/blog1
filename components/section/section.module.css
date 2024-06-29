@@ -1,6 +1,11 @@
 .section {
-    background-color: #f1f2f2;
-    display: block;
+    background-color: #f1f2f2;    
+}
+
+.wrapper {
+    max-width: 1536px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
 }
 
 .contentSection {
@@ -144,11 +149,11 @@
     }
 
     .title .articleSectionTitle {
-        font-size: 2.2rem;
+        font-size: 1.2rem;
     }
     
     .title .commentSectionTitle {
-        font-size: 2.2rem;
+        font-size: 1.2rem;
     }
  
     .contentSection {

@@ -2,13 +2,16 @@ import { Fragment } from "react"
 import Footer from '../components/footer'
 import Header from '../components/header'
 
-export const MainLayout = ({children}) => {
+export const MainLayout = ({ children }) => {
 
+    const layoutStyle = {
+        minHeight: "100vh"
+    };
     return (
-        <Fragment>
+        <div style={layoutStyle}>
             <Header />
-                <main>{children}</main>
+            <main style={layoutStyle}>{children}</main>
             <Footer />
-        </Fragment>
+        </div>
     )
 }

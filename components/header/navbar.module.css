@@ -92,7 +92,7 @@
 }
 
 
-@media (max-width: 425px) {
+@media (max-width: 768px) {
     .nav {
         display: none;
     }
@@ -140,11 +140,8 @@
 
 }
 
-@media only screen and (min-width: 426px) and (max-width: 768px) {
-    .nav {
-        display: none;
-        position: relative;
-    }
+@media only screen and (min-width: 768px) {
+
 
     .logoImage {
         padding-left: 0.5rem;
@@ -178,9 +175,14 @@
     .navLeft>button:nth-child(2) {
         display: none !important;
     }
+    .nav {
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+
 } 
 
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
+@media only screen and (min-width: 1024px) {
     .nav {
         font-size: 0.9rem;
         font-weight: bold;
@@ -198,7 +200,7 @@
 }
 
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1441px) {
     .logoImage {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
@@ -215,7 +217,8 @@
     }
     
     .nav {
-        font-size: 1.5rem;
+        font-size: 0.9rem;
+        font-weight: bold;
         color: black;
         cursor: pointer;
         display: flex;
@@ -229,7 +232,7 @@
         border: 20px;
         background-color: black;
         color: white;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         height: max-content;
         width: max-content;
         justify-content: center;
