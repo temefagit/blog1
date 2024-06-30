@@ -1,4 +1,3 @@
-import HeroSection from '../heroSection/index';
 import Articles from '../articles/index';
 import Comments from '../comments/index';
 
@@ -7,10 +6,9 @@ import { Container } from '@/common/container';
 
 export default function Section() {
     return (
-        <Container>
-            <section className={style.section}>
-                <HeroSection />
-                <div className={style.wrapper}>
+        <section className={style.section}>
+            <div className={style.wrapper}>
+                <Container>
 
                     <div className={style.contentSection}>
                         <div className={style.articles}>
@@ -23,13 +21,6 @@ export default function Section() {
                                 <Articles />
                                 <Articles />
                                 <Articles />
-                                <Articles />
-                                <Articles />
-                                <Articles />
-                                <Articles />
-                                <Articles />
-                                <Articles />
-
                                 <Articles />
                                 <Articles />
                                 <Articles />
@@ -52,15 +43,12 @@ export default function Section() {
                             <Comments />
                             <Comments />
                             <Comments />
-                            <Comments />
-                            <Comments />
-                            <Comments />
-                            <Comments />
                         </div>
                     </div>
-                </div>
-            </section>
-        </Container>
+                </Container>
+
+            </div>
+        </section>
 
     )
 }

@@ -1,10 +1,17 @@
+.heroSection {
+    background-color: #CAD3C8;
+}
+
 .welcomeSection {
     display: flex;
-    background-color: #CAD3C8;
-    height: fit-content;
     justify-content: space-between;
     flex-direction: row-reverse;
+    height: fit-content;
+
+
 }
+
+
 .welcomeSectionItems {
     display: flex;
     justify-content: center;
@@ -35,10 +42,12 @@
     .welcomeTitle {
         display: none;
     }
+
     .welcomeText {
-    
+
         font-size: 0.5rem;
     }
+
     .welcomeSection {
         display: flex;
         background-color: #CAD3C8;
@@ -46,6 +55,7 @@
         justify-content: space-between;
         flex-direction: column;
     }
+
     .welcomeSection img {
         padding: 0;
         align-self: center;
@@ -65,10 +75,12 @@
     .welcomeTitle {
         display: none;
     }
+
     .welcomeText {
-    
+
         font-size: 1rem;
     }
+
     .welcomeSection {
         display: flex;
         background-color: #CAD3C8;
@@ -76,6 +88,7 @@
         justify-content: space-between;
         flex-direction: column;
     }
+
     .welcomeSection img {
         padding: 0;
         align-self: center;
@@ -88,12 +101,12 @@
         padding: 1rem 0 1rem 0 !important;
         align-self: center;
     }
-} 
+}
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-   .welcomeTitle {
-    font-size: 2rem;
-   }
+    .welcomeTitle {
+        font-size: 2rem;
+    }
 }
 
 
@@ -101,10 +114,12 @@
     .welcomeTitle {
         font-size: 3.5rem;
     }
+
     .welcomeText {
         font-size: 2rem;
         padding-top: 2.5rem;
     }
+
     .welcomeSection img {
         width: 500px;
         height: 300px;

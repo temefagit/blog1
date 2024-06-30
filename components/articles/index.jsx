@@ -4,7 +4,6 @@ import Image from 'next/image'
 
 export default function Articles() {
     return (
-        <Container>
             <div className={style.articleSection}>
                 <div className={style.articlesItems}>
                     <h3 className={style.articleTitle}>بازگشت جستجوی شغلها به سرویسهای وب سایت Stack Overflow</h3>
@@ -19,6 +18,5 @@ export default function Articles() {
                     </div>
                 </div>
             </div>
-        </Container>
     )
 }

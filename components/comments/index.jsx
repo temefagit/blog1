@@ -3,7 +3,6 @@ import style from './comments.module.css';
 
 export default function Comments() {
     return (
-        <Container>
             <div className={style.commentSection}>
                 <div className={style.commentsItems}>
                     <h3 className={style.commentTitle}>عنوان نظر</h3>
@@ -12,6 +11,5 @@ export default function Comments() {
                     </p>
                 </div>
             </div>
-        </Container>
     )
 }
