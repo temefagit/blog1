@@ -2,6 +2,9 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body,
@@ -106,6 +109,10 @@ section {
 	display: block;
 }
 
+*:focus {
+    outline: none;
+}
+
 body {
 	margin: 0;
     padding: 0;
@@ -140,8 +147,4 @@ table {
 
 body {
 	font-family: 'vazirmatn';
-}
-
-button {
-	font-family: inherit
 }

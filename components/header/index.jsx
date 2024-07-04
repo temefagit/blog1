@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link';
 import style from './navbar.module.css';
 import Image from 'next/image';
@@ -12,10 +13,12 @@ export default function Navbar() {
             <header className={style.header}>
                 <div className={style.navRight}>
                     <div className={style.logo}>
-                        <div className={style.myBlog}>
-                            <h1>پژواک</h1>
-                        </div>
-                        <Image className={style.logoImage} quality={80} width={28.8} height={28.8} src="/images/logo.png" alt="لوگو" />
+                        <Link href='/'>
+                            <div className={style.myBlog}>
+                                <h1>پژواک</h1>
+                            </div>
+                        </Link>
+                        <Image className={style.logoImage} quality={80} width={48} height={28.8} src="/images/logo.png" alt="لوگو" />
                     </div>
                     <nav className={style.nav}>
                         <ul className={style.navUL}>
@@ -53,8 +56,16 @@ export default function Navbar() {
                     </nav>
                 </div>
                 <div className={style.navLeft}>
-                    <Button><span>ثبت نام / ورود</span></Button>
-                    <Button>نوشته جدید</Button>
+                    <div className={style.btnLoginSignUp}>
+                        <Link href={'/'}>
+                            <Button variant='info'><span>ثبت نام / ورود</span></Button>
+                        </Link>
+                    </div>
+                    <div className={style.btnCreateArticle}>
+                        <Link href='create'>
+                            <Button variant='info'>نوشته جدید</Button>
+                        </Link>
+                    </div>
                 </div>
             </header >
         </Container>

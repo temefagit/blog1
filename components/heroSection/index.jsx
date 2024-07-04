@@ -7,7 +7,6 @@ export default function HeroSection() {
     return (
         <div className={style.heroSection}>
             <Container>
-
                 <div className={style.welcomeSection}>
                     <Image className={style.welcomeSectionItems} quality={80} width={288} height={180} src='/images/bg_section.png' alt='عکس هدر'></Image>
                     <div className={style.welcomeSectionItems}>

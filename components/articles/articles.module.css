@@ -6,6 +6,7 @@
     border-radius: 1rem;
     box-shadow: 0 5px 8px #0000000a;
     margin-bottom: 1rem;
+    font-family: 'roboto';
 }
 
 .articlesItems {
@@ -19,11 +20,12 @@
     display: flex;
     flex-direction: row;
     padding-bottom: 1rem;
+    font-weight: 900;
 }
 
 .articleText {
     font-size: 0.9rem;
-    font-weight: 400;
+    font-weight: 500;
     padding: 0.5rem 0 0.5rem 0;
     display: flex;
     flex-direction: row;

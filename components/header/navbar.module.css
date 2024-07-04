@@ -54,6 +54,7 @@
 
 }
 
+
 .borderBottoom {
     padding-left: 1.3rem;
     text-decoration: none;
@@ -91,6 +92,13 @@
     padding-left: 0.5rem;
 }
 
+.btnCreateArticle {
+    display: flex;
+}
+
+.btnLoginSignUp {
+    padding-left: 0.5rem;
+}
 
 @media (max-width: 768px) {
     .nav {
@@ -111,7 +119,21 @@
         cursor: pointer;
     }
 
-    .navLeft button {
+    .navLeft .btnLoginSignUp > button {
+        display: flex;
+        cursor: pointer;
+        border-radius: 7.5px;
+        border: 20px;
+        background-color: black;
+        color: white;
+        font-size: 1rem;
+        height: max-content;
+        width: max-content;
+        justify-content: center;
+        align-items: center;
+        padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+    }
+    .navLeft .btnCreateArticle > button {
         display: flex;
         cursor: pointer;
         border-radius: 7.5px;
@@ -126,17 +148,18 @@
         padding: 0.2rem 0.5rem 0.2rem 0.5rem;
     }
 
-    .navLeft button::after {
+    .navLeft .btnCreateArticle a button {
+        display: none;
+    }
+
+    .navLeft .btnLoginSignUp a button span {
+        display: none;
+    }
+    .navLeft .btnLoginSignUp a button::after {
         content: "ورود";
     }
 
-    .navLeft>button:nth-child(2) {
-        display: none !important;
-    }
 
-    .navLeft>button:nth-child(1)>span {
-        display: none !important;
-    }
 
 }
 
@@ -147,8 +170,6 @@
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         cursor: pointer;
-        height: 35px;
-        width: 35px;
     }
 
     .myBlog {
@@ -157,7 +178,7 @@
         cursor: pointer;
     }
 
-    .navLeft button {
+    .navLeft .btnCreateArticle > button {
         display: flex;
         cursor: pointer;
         border-radius: 7.5px;
@@ -169,18 +190,31 @@
         width: max-content;
         justify-content: center;
         align-items: center;
-        padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+        padding: 0.5rem;
     }
-
-    .navLeft>button:nth-child(2) {
-        display: none !important;
+    .navLeft .btnLoginSignUp > button {
+        display: flex;
+        cursor: pointer;
+        border-radius: 7.5px;
+        border: 20px;
+        background-color: black;
+        color: white;
+        font-size: 0.8rem;
+        height: max-content;
+        width: max-content;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+    }
+    .navLeft .btnCreateArticle {
+        display: none;
     }
     .nav {
         font-size: 0.9rem;
         font-weight: bold;
     }
 
-} 
+}
 
 @media only screen and (min-width: 1024px) {
     .nav {
@@ -192,11 +226,13 @@
         padding-left: 0.5rem;
         text-decoration: none;
         color: black;
-    
+
     }
-    .navLeft>button:nth-child(2) {
-        display: none !important;
+
+    .navLeft .btnCreateArticle {
+        display: flex;
     }
+
 }
 
 
@@ -208,14 +244,14 @@
         height: 60px;
         width: 60px;
     }
-    
+
     .myBlog {
         font-size: 2rem;
         color: black;
         cursor: pointer;
-    
+
     }
-    
+
     .nav {
         font-size: 0.9rem;
         font-weight: bold;
@@ -225,7 +261,7 @@
         padding-right: 3rem;
     }
 
-    .navLeft button {
+    .navLeft .btnCreateArticle > button {
         display: flex;
         cursor: pointer;
         border-radius: 7.5px;
@@ -237,6 +273,23 @@
         width: max-content;
         justify-content: center;
         align-items: center;
-        padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+        padding: 0.5rem
     }
+    .navLeft .btnLoginSignUp > button {
+        display: flex;
+        cursor: pointer;
+        border-radius: 7.5px;
+        border: 20px;
+        background-color: black;
+        color: white;
+        font-size: 1.1rem;
+
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+    }
+    .navLeft .btnCreateArticle {
+        display: flex;
+    }
+
 }
