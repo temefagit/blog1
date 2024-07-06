@@ -1,9 +1,9 @@
 'use client'
+import { Button } from '@/common/button/index';
+import { Container } from '@/common/container/index';
 import Link from 'next/link';
 import style from './navbar.module.css';
 import Image from 'next/image';
-import { Button } from '@/common/button/index';
-import { Container } from '@/common/container/index';
 
 
 export default function Navbar() {
@@ -58,12 +58,12 @@ export default function Navbar() {
                 <div className={style.navLeft}>
                     <div className={style.btnLoginSignUp}>
                         <Link href={'/'}>
-                            <Button variant='info'><span>ثبت نام / ورود</span></Button>
+                            <Button type='button' variant='primary'><span>ثبت نام / ورود</span></Button>
                         </Link>
                     </div>
                     <div className={style.btnCreateArticle}>
-                        <Link href='create'>
-                            <Button variant='info'>نوشته جدید</Button>
+                        <Link href='/create'>
+                            <Button type='button' variant='primary'>نوشته جدید</Button>
                         </Link>
                     </div>
                 </div>
