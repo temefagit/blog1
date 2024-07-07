@@ -45,7 +45,7 @@ export default function CreateArticle() {
                         </div>
                         <form onSubmit={handleSubmit} className="flex flex-col pt-4">
                             <input name="title" value={formData.title} onChange={handleChange} className="border-slate-300 p-2 rounded-md focus:border-sky-500 focus:outline-none mt-4 pt-2 pr-2 text-gray-400 leading-4 text-sm border" type="text" placeholder="یک عنوان برای مقاله خود بنویسید (الزامی)"></input>
-                            <input name="body" value={formData.body} onChange={handleChange} className="border-slate-300 p-2 rounded-md focus:border-sky-500 focus:outline-none mt-4 h-64 text-gray-400 leading-8 text-sm border min-w-fit" type="text"></input>
+                            <textarea name="body" value={formData.body} onChange={handleChange} className="border-slate-300 p-2 rounded-md focus:border-sky-500 focus:outline-none mt-4 h-64 text-gray-400 leading-8 text-sm border min-w-fit align-text-top"></textarea>
                             <div className="pt-10">
                                 <Button type='submit' variant='primary'>انتشار نوشته</Button>
                             </div>
