@@ -1,13 +1,13 @@
-import './reset.css';
-import Section from '../components/section';
-import HeroSection from '@/components/heroSection'
-import style from './page.module.css';
-import { MainLayout } from './../layouts/main-layout'
-import Link from 'next/link';
+import "./reset.css";
+import { Section } from "../components/section";
+import { HeroSection } from "@/components/heroSection";
+import style from "./page.module.css";
+import { MainLayout } from "./../layouts/main-layout";
 export const metadata = {
-  title: 'وبلاگ پژواک',
-  description: 'وبلاگ پژواک، سبک زندگی، کتاب و ادبیات، اخبار روز، بازی و سرگرمی، فرهنگ و هنر',
-}
+  title: "وبلاگ پژواک",
+  description:
+    "وبلاگ پژواک، سبک زندگی، کتاب و ادبیات، اخبار روز، بازی و سرگرمی، فرهنگ و هنر",
+};
 
 export default function Home() {
   return (
@@ -17,7 +17,5 @@ export default function Home() {
         <Section />
       </MainLayout>
     </div>
-
-
   );
 }

@@ -1,8 +1,7 @@
 import '@/app/reset.css';
 import style from '@/app/page.module.css';
-import { MainLayout } from '@/layouts/main-layout'
-import CreateArticle from '@/components/createArticle/index'
-
+import { CreateArticle } from '@/components/createArticle/index';
+import { MainLayout } from '@/layouts/main-layout';
 
 export default function Create() {
     return (

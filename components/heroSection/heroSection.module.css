@@ -18,6 +18,11 @@
     flex-direction: column;
 }
 
+.welcomeSection img {
+    height: auto;
+    width: auto;
+}
+
 .welcomeTitle {
     display: flex;
     font-size: 3rem;
