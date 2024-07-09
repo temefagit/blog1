@@ -7,6 +7,8 @@ import { fetchArticles } from "@/models/articles/index";
 import { useState } from "react";
 import { Container } from "@/common/container";
 import { Articles } from "../articles";
+import { SkeletonArticle } from "../skeleton/articles";
+
 
 export const Section: React.FC = () => {
   const [pagination, setPagination] = useState(1);
@@ -16,6 +18,7 @@ export const Section: React.FC = () => {
     queryFn: fetchArticles,
     enabled: !!pagination,
   });
+  
 
   return (
     <section className={style.section}>
@@ -27,19 +30,17 @@ export const Section: React.FC = () => {
                 <h2 className={style.articleSectionTitle}>جدیدترین‌ها</h2>
               </div>
               <div className={style.articlesItems}>
-                {isFetching ? (
-                  <p>Loading</p>
-                ) : (
-                  data?.map((item) => {
-                    return (
+                {isFetching
+                  ? Array.from({ length: 100 }, (_, idx) => (
+                      <SkeletonArticle key={`loading-article-${idx}`} />
+                    ))
+                  : data?.map((item) => (
                       <Articles
                         key={item.id}
                         title={item.title}
                         body={item.body}
                       />
-                    );
-                  })
-                )}
+                    ))}
               </div>
             </div>
             <div className={style.comments}>
