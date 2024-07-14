@@ -14,6 +14,9 @@ module.exports = {
   ],
   theme: {
     screens: {
+      m: {'min': '320px', 'max': '488px'} ,
+      mt: {'min': '320px', 'max': '767px'} ,
+      slF: {'min': '768px', 'max': '1024px'} ,
       sm: '480px',
       md: '768px',
       lg: '976px',

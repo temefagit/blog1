@@ -10,24 +10,25 @@ type Props = {
 export const Articles: React.FC<Props> = (props: Props) => {
   const { title, body } = props;
 
+
   return (
-    <div className={style.articleSection}>
-      <div className={style.articlesItems}>
-        <h3 className={style.articleTitle}>{title}</h3>
+    <div className='bg-white flex items-center justify-center rounded-lg shadow-md font-roboto'>
+      <div className='flex flex-col pl-6 p-4'>
+        <h3 className='flex flex-row pb-4 text-sm font-bold'>{title}</h3>
         <Image
           quality={100}
-          width={700}
-          height={300}
+          width={320}
+          height={160}
           src="/images/articleImg.jpg"
           alt="عکس مقاله"
         ></Image>
-        <p className={style.articleText}>{body}</p>
-        <div className={style.options}>
-          <div>
-            <span>افزودن دیدگاه</span>
-            <span>ذخیره</span>
+        <p className='text-sm font-normal py-2'>{body}</p>
+        <div className='flex justify-end pt-2'>
+          <div className="hidden md:flex">
+            <p className="flex cursor-pointer text-xs">افزودن دیدگاه</p>
+            <p className="flex pr-4 cursor-pointer text-xs">ذخیره</p>
           </div>
-          <span>مشاهده</span>
+          <p className="cursor-pointer text-xs pr-3">مشاهده</p>
         </div>
       </div>
     </div>

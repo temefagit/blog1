@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/common/button";
-import { Container } from "@/common/container/index";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
+import { Container } from "@/common/container";
 
 export const CreateArticle: React.FC = () => {
 
@@ -32,7 +32,7 @@ export const CreateArticle: React.FC = () => {
   
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createArticle.mutate();
+    createArticle.mutate(formData);
   };
 
   return (

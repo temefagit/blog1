@@ -1,7 +1,6 @@
 import "./reset.css";
 import { Section } from "../components/section";
 import { HeroSection } from "@/components/heroSection";
-import style from "./page.module.css";
 import { MainLayout } from "./../layouts/main-layout";
 export const metadata = {
   title: "وبلاگ پژواک",
@@ -11,7 +10,7 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className={style.container}>
+    <div className='smooth-scroll box-border m-0 p-0 h-full	overflow-x-hidden	subpixel-antialiased'>
       <MainLayout>
         <HeroSection />
         <Section />

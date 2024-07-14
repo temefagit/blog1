@@ -1,9 +1,8 @@
 import { PropsWithChildren, ReactNode } from "react";
-import style from "./container.module.css";
 
 interface Props {
   children: ReactNode;
 }
 export const Container: React.FC<Props> = ({ children }) => {
-  return <div className={style.container}>{children}</div>;
+  return <div className='w-full max-w-100% md:max-w-768px lg:max-w-1024px xl:max-w-1441px'>{children}</div>;
 };
