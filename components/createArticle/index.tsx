@@ -6,12 +6,21 @@ import axios from "axios";
 import Link from "next/link";
 import { Container } from "@/common/container";
 import { useForm, Controller, FormProvider } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
+const schema = z.object({
+  title: z.string().min(1, "عنوان الزامی است."),
+  body: z
+    .string()
+    .min(10, "متن باید حداقل ۱۰ کاراکتر داشته باشد.")
+    .max(1000, "متن باید حداکثر ۱۰۰۰۰ کاراکتر داشته باشد."),
+});
 
 type FormValues = {
-  title: string
-  body: string
-}
+  title: string;
+  body: string;
+};
 
 export const CreateArticle: React.FC = () => {
   const form = useForm<FormValues>({
@@ -19,8 +28,9 @@ export const CreateArticle: React.FC = () => {
       title: "",
       body: "",
     },
+    resolver: zodResolver(schema),
+    reValidateMode: "onChange",
   });
-  
 
   const createArticle = useMutation({
     mutationFn: async (data) => {
@@ -34,7 +44,7 @@ export const CreateArticle: React.FC = () => {
     },
   });
 
-  const onSubmit = (data: FormValues): void => { 
+  const onSubmit = (data: FormValues): void => {
     createArticle.mutate(data);
   };
 
@@ -57,21 +67,43 @@ export const CreateArticle: React.FC = () => {
               >
                 <Controller
                   name="title"
-                  render={({ field }) => (
-                    <input
-                      {...field}
-                      placeholder="یک عنوان برای مقاله خود بنویسید (الزامی)"
-                      className="border-slate-300 p-2 rounded-md focus:border-sky-500 focus:outline-none mt-4 pt-2 pr-2 text-gray-400 leading-4 text-sm border"
-                    />
+                  render={({ field, fieldState }) => (
+                    <div>
+                      <input
+                        {...field}
+                        placeholder="یک عنوان برای مقاله خود بنویسید (الزامی)"
+                        className="w-full border-slate-300 p-2 rounded-md focus:border-sky-500 focus:outline-none mt-4 pt-2 pr-2 text-gray-400 leading-4 text-sm border"
+                      />
+                      <p
+                        className={`${
+                          fieldState.error
+                            ? 'p-2 my-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 role="alert"'
+                            : ""
+                        }`}
+                      >
+                        {fieldState.error?.message}
+                      </p>
+                    </div>
                   )}
                 />
                 <Controller
                   name="body"
-                  render={({ field }) => (
-                    <textarea
-                      {...field}
-                      className="border-slate-300 p-2 rounded-md focus:border-sky-500 focus:outline-none mt-4 h-64 text-gray-400 leading-8 text-sm border min-w-fit align-text-top"
-                    />
+                  render={({ field, fieldState }) => (
+                    <div>
+                      <textarea
+                        {...field}
+                        className="w-full border-slate-300 p-2 rounded-md focus:border-sky-500 focus:outline-none mt-4 h-64 text-gray-400 leading-8 text-sm border min-w-fit align-text-top"
+                      />
+                      <p
+                        className={`${
+                          fieldState.error
+                            ? 'p-2 my-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 role="alert"'
+                            : ""
+                        }`}
+                      >
+                        {fieldState.error?.message}
+                      </p>
+                    </div>
                   )}
                 />
                 <div className="pt-10 pb-10">
