@@ -1,38 +1,41 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/common/button";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
 import { Container } from "@/common/container";
+import { useForm, Controller, FormProvider } from "react-hook-form";
+
+
+type FormValues = {
+  title: string
+  body: string
+}
 
 export const CreateArticle: React.FC = () => {
-
-  const [formData, setFormData] = 
-  useState<{title: string; body:string}>({
-    title: '',
-    body: ''
+  const form = useForm<FormValues>({
+    defaultValues: {
+      title: "",
+      body: "",
+    },
   });
+  
 
   const createArticle = useMutation({
-    mutationFn: async () => {
-      await axios.post("https://jsonplaceholder.typicode.com/posts", formData);
+    mutationFn: async (data) => {
+      return await axios.post(
+        "https://jsonplaceholder.typicode.com/posts",
+        data
+      );
     },
     onSuccess: () => {
-      console.log("The New Article Succeccfully Created.");
+      console.log("The New Article Successfully Created.");
     },
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target as HTMLInputElement;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    createArticle.mutate(formData);
+  const onSubmit = (data: FormValues): void => { 
+    createArticle.mutate(data);
   };
 
   return (
@@ -47,27 +50,37 @@ export const CreateArticle: React.FC = () => {
               </Link>
               <h2 className="text-lg font-bold">نوشتن مقاله جدید</h2>
             </div>
-            <form onSubmit={handleSubmit} className="flex flex-col pt-4">
-              <input
-                name="title"
-                value={formData.title}
-                onChange={handleChange}
-                className="border-slate-300 p-2 rounded-md focus:border-sky-500 focus:outline-none mt-4 pt-2 pr-2 text-gray-400 leading-4 text-sm border"
-                type="text"
-                placeholder="یک عنوان برای مقاله خود بنویسید (الزامی)"
-              ></input>
-              <textarea
-                name="body"
-                value={formData.body}
-                onChange={handleChange}
-                className="border-slate-300 p-2 rounded-md focus:border-sky-500 focus:outline-none mt-4 h-64 text-gray-400 leading-8 text-sm border min-w-fit align-text-top"
-              ></textarea>
-              <div className="pt-10 pb-10">
-                <Button type="submit" variant="primary">
-                  انتشار نوشته
-                </Button>
-              </div>
-            </form>
+            <FormProvider {...form}>
+              <form
+                className="flex flex-col pt-4"
+                onSubmit={form.handleSubmit(onSubmit)}
+              >
+                <Controller
+                  name="title"
+                  render={({ field }) => (
+                    <input
+                      {...field}
+                      placeholder="یک عنوان برای مقاله خود بنویسید (الزامی)"
+                      className="border-slate-300 p-2 rounded-md focus:border-sky-500 focus:outline-none mt-4 pt-2 pr-2 text-gray-400 leading-4 text-sm border"
+                    />
+                  )}
+                />
+                <Controller
+                  name="body"
+                  render={({ field }) => (
+                    <textarea
+                      {...field}
+                      className="border-slate-300 p-2 rounded-md focus:border-sky-500 focus:outline-none mt-4 h-64 text-gray-400 leading-8 text-sm border min-w-fit align-text-top"
+                    />
+                  )}
+                />
+                <div className="pt-10 pb-10">
+                  <Button type="submit" variant="primary">
+                    انتشار نوشته
+                  </Button>
+                </div>
+              </form>
+            </FormProvider>
           </div>
         </div>
         <div className="flex flex-col flex-start col-span-1 pt-24 max-[768px]:pt-5 md:col-span-2">
