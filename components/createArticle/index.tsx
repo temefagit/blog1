@@ -33,7 +33,7 @@ export const CreateArticle: React.FC = () => {
   });
 
   const createArticle = useMutation({
-    mutationFn: async (data) => {
+    mutationFn: async (data: FormValues) => {
       return await axios.post(
         "https://jsonplaceholder.typicode.com/posts",
         data
@@ -66,6 +66,7 @@ export const CreateArticle: React.FC = () => {
                 onSubmit={form.handleSubmit(onSubmit)}
               >
                 <Controller
+                  control={form.control}
                   name="title"
                   render={({ field, fieldState }) => (
                     <div>
@@ -107,7 +108,11 @@ export const CreateArticle: React.FC = () => {
                   )}
                 />
                 <div className="pt-10 pb-10">
-                  <Button type="submit" variant="primary">
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    control={form.control}
+                  >
                     انتشار نوشته
                   </Button>
                 </div>
