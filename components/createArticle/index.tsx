@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
 import { Container } from "@/common/container";
-import { useForm, Controller, FormProvider } from "react-hook-form";
+import { useForm, Controller, FormProvider, useFormContext, useWatch } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -88,6 +88,7 @@ export const CreateArticle: React.FC = () => {
                   )}
                 />
                 <Controller
+                  control={form.control}
                   name="body"
                   render={({ field, fieldState }) => (
                     <div>
@@ -108,11 +109,7 @@ export const CreateArticle: React.FC = () => {
                   )}
                 />
                 <div className="pt-10 pb-10">
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    control={form.control}
-                  >
+                  <Button type="submit" variant="primary">
                     انتشار نوشته
                   </Button>
                 </div>

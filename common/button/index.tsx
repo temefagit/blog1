@@ -3,30 +3,26 @@ import {
   PropsWithChildren,
   DetailedHTMLProps,
   ButtonHTMLAttributes,
-  useEffect,
 } from "react";
-import { Control, useWatch } from "react-hook-form";
-
-type FormValues = {
-  title: string;
-  body: string;
-};
+import { useFormContext, useWatch } from "react-hook-form";
 
 type Props = PropsWithChildren<
   {
     variant?: "primary" | "error";
-    control?: Control<FormValues>;
   } & DetailedHTMLProps<
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   >
 >;
+type FormValues = {
+  title: string;
+  body: string;
+};
 
 type variantsTypes = Record<"primary" | "error", string>;
 
 export const Button: React.FC<Props> = ({
   variant = "primary",
-  control,
   children,
   ...props
 }) => {
@@ -37,14 +33,16 @@ export const Button: React.FC<Props> = ({
 
   const buttonStyles: string = `${variants[variant]} rounded px-6 pb-2 pt-2.5 text-sm font-medium text-white mt:after:content-['ورود']`;
 
-  if (control) {
-    const titleValue = useWatch({
-      control,
-      name: "title",
-      defaultValue: "default",
-    });
-    console.log(titleValue);
-  }
+  const formControl = useFormContext();
+  const titleValue = formControl
+    ? useWatch({
+        control: formControl?.control,
+        name: "title",
+        defaultValue: "default",
+      })
+    : "";
+
+  console.log(titleValue);
 
   return (
     <button {...props} className={buttonStyles}>
