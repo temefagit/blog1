@@ -14,10 +14,6 @@ type Props = PropsWithChildren<
     HTMLButtonElement
   >
 >;
-type FormValues = {
-  title: string;
-  body: string;
-};
 
 type variantsTypes = Record<"primary" | "error", string>;
 

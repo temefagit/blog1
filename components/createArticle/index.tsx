@@ -5,16 +5,18 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
 import { Container } from "@/common/container";
-import { useForm, Controller, FormProvider, useFormContext, useWatch } from "react-hook-form";
+import { useForm, Controller, FormProvider } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "@/common/input";
+import { TextArea } from "@/common/textarea";
 
 const schema = z.object({
   title: z.string().min(1, "عنوان الزامی است."),
   body: z
     .string()
     .min(10, "متن باید حداقل ۱۰ کاراکتر داشته باشد.")
-    .max(1000, "متن باید حداکثر ۱۰۰۰۰ کاراکتر داشته باشد."),
+    .max(10000, "متن باید حداکثر ۱۰۰۰۰ کاراکتر داشته باشد."),
 });
 
 type FormValues = {
@@ -70,11 +72,7 @@ export const CreateArticle: React.FC = () => {
                   name="title"
                   render={({ field, fieldState }) => (
                     <div>
-                      <input
-                        {...field}
-                        placeholder="یک عنوان برای مقاله خود بنویسید (الزامی)"
-                        className="w-full border-slate-300 p-2 rounded-md focus:border-sky-500 focus:outline-none mt-4 pt-2 pr-2 text-gray-400 leading-4 text-sm border"
-                      />
+                      <Input placeholder="یک عنوان برای مقاله خود بنویسید (الزامی)" {...field} />
                       <p
                         className={`${
                           fieldState.error
@@ -92,10 +90,7 @@ export const CreateArticle: React.FC = () => {
                   name="body"
                   render={({ field, fieldState }) => (
                     <div>
-                      <textarea
-                        {...field}
-                        className="w-full border-slate-300 p-2 rounded-md focus:border-sky-500 focus:outline-none mt-4 h-64 text-gray-400 leading-8 text-sm border min-w-fit align-text-top"
-                      />
+                      <TextArea {...field} />
                       <p
                         className={`${
                           fieldState.error
@@ -124,11 +119,11 @@ export const CreateArticle: React.FC = () => {
             </div>
             <div className="flex flex-col py-3">
               <div className="py-2">
-                <input type="radio" value="عمومی"></input>
+                <input name="access" type="radio" value="عمومی"></input>
                 <label className="px-3">عمومی</label>
               </div>
               <div className="py-2">
-                <input type="radio" value="فقط دنبال کنندگان"></input>
+                <input name="access" type="radio" value="فقط دنبال کنندگان"></input>
                 <label className="px-3">فقط دنبال کنندگان</label>
               </div>
             </div>
