@@ -48,6 +48,7 @@ export const CreateArticle: React.FC = () => {
 
   const onSubmit = (data: FormValues): void => {
     createArticle.mutate(data);
+    form.reset();
   };
 
   return (
@@ -72,7 +73,10 @@ export const CreateArticle: React.FC = () => {
                   name="title"
                   render={({ field, fieldState }) => (
                     <div>
-                      <Input placeholder="یک عنوان برای مقاله خود بنویسید (الزامی)" {...field} />
+                      <Input
+                        placeholder="یک عنوان برای مقاله خود بنویسید (الزامی)"
+                        {...field}
+                      />
                       <p
                         className={`${
                           fieldState.error
@@ -104,7 +108,11 @@ export const CreateArticle: React.FC = () => {
                   )}
                 />
                 <div className="pt-10 pb-10">
-                  <Button type="submit" variant="primary">
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    disabled={form.formState.isSubmitting}
+                  >
                     انتشار نوشته
                   </Button>
                 </div>
@@ -123,7 +131,11 @@ export const CreateArticle: React.FC = () => {
                 <label className="px-3">عمومی</label>
               </div>
               <div className="py-2">
-                <input name="access" type="radio" value="فقط دنبال کنندگان"></input>
+                <input
+                  name="access"
+                  type="radio"
+                  value="فقط دنبال کنندگان"
+                ></input>
                 <label className="px-3">فقط دنبال کنندگان</label>
               </div>
             </div>

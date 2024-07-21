@@ -28,6 +28,8 @@ export const Button: React.FC<Props> = ({
   };
 
   const buttonStyles: string = `${variants[variant]} rounded px-6 pb-2 pt-2.5 text-sm font-medium text-white mt:after:content-['ورود']`;
+  const disbableButtonStyles: string = 'bg-zinc-500 rounded px-6 pb-2 pt-2.5 text-sm font-medium text-white opacity-50 cursor-not-allowed';
+
 
   const formControl = useFormContext();
   const titleValue = formControl
@@ -37,11 +39,10 @@ export const Button: React.FC<Props> = ({
         defaultValue: "default",
       })
     : "";
-
   console.log(titleValue);
 
   return (
-    <button {...props} className={buttonStyles}>
+    <button {...props} className={`${buttonStyles} ${props.disabled ? disbableButtonStyles : ""}`}>
       {children}
     </button>
   );
