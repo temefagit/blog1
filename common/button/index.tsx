@@ -1,10 +1,10 @@
 "use client";
+import { useWatchHook } from "@/hooks/useWatch";
 import {
   PropsWithChildren,
   DetailedHTMLProps,
   ButtonHTMLAttributes,
 } from "react";
-import { useFormContext, useWatch } from "react-hook-form";
 
 type Props = PropsWithChildren<
   {
@@ -28,21 +28,18 @@ export const Button: React.FC<Props> = ({
   };
 
   const buttonStyles: string = `${variants[variant]} rounded px-6 pb-2 pt-2.5 text-sm font-medium text-white mt:after:content-['ورود']`;
-  const disbableButtonStyles: string = 'bg-zinc-500 rounded px-6 pb-2 pt-2.5 text-sm font-medium text-white opacity-50 cursor-not-allowed';
+  const disbableButtonStyles: string =
+    "bg-zinc-500 rounded px-6 pb-2 pt-2.5 text-sm font-medium text-white opacity-50 cursor-not-allowed";
 
-
-  const formControl = useFormContext();
-  const titleValue = formControl
-    ? useWatch({
-        control: formControl?.control,
-        name: "title",
-        defaultValue: "default",
-      })
-    : "";
-  console.log(titleValue);
+  console.log(useWatchHook("title"));
 
   return (
-    <button {...props} className={`${buttonStyles} ${props.disabled ? disbableButtonStyles : ""}`}>
+    <button
+      {...props}
+      className={`${buttonStyles} ${
+        props.disabled ? disbableButtonStyles : ""
+      }`}
+    >
       {children}
     </button>
   );
