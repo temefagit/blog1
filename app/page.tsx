@@ -3,9 +3,9 @@ import { Section } from "../components/section";
 import { HeroSection } from "@/components/heroSection";
 import { MainLayout } from "./../layouts/main-layout";
 export const metadata = {
-  title: "وبلاگ پژواک",
+  title: "Blog",
   description:
-    "وبلاگ پژواک، سبک زندگی، کتاب و ادبیات، اخبار روز، بازی و سرگرمی، فرهنگ و هنر",
+    "Personal Blog, Blog, My Blog",
 };
 
 export default function Home() {

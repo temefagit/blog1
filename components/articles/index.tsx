@@ -13,21 +13,21 @@ export const Articles: React.FC<Props> = (props: Props) => {
   return (
     <div className='bg-white flex items-center justify-center rounded-lg shadow-md font-roboto'>
       <div className='flex flex-col pl-6 p-4'>
-        <h3 className='flex flex-row pb-4 text-sm font-bold'>{title}</h3>
+        <h3 className='flex flex-row pb-4 text-sm font-bold self-end'>{title}</h3>
         <Image
           quality={100}
-          width={320}
+          width={600}
           height={160}
-          src="/images/articleImg.jpg"
-          alt="عکس مقاله"
+          src="/images/post.png"
+          alt="Article Image"
         ></Image>
-        <p className='text-sm font-normal py-2'>{body}</p>
-        <div className='flex justify-end pt-2'>
+        <p className='text-sm font-normal py-2 text-left'>{body}</p>
+        <div className='flex justify-start pt-2'>
           <div className="hidden md:flex">
-            <p className="flex cursor-pointer text-xs">افزودن دیدگاه</p>
-            <p className="flex pr-4 cursor-pointer text-xs">ذخیره</p>
+            <p className="flex cursor-pointer text-xs">Add a comment</p>
+            <p className="flex pr-4 cursor-pointer text-xs">Bookmark</p>
           </div>
-          <p className="cursor-pointer text-xs pr-3">مشاهده</p>
+          <p className="cursor-pointer text-xs pr-3">View</p>
         </div>
       </div>
     </div>

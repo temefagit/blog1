@@ -12,13 +12,12 @@ import { Input } from "@/common/input";
 import { TextArea } from "@/common/textarea";
 
 const schema = z.object({
-  title: z.string().min(1, "عنوان الزامی است."),
+  title: z.string().min(1, "Title is required."),
   body: z
     .string()
-    .min(10, "متن باید حداقل ۱۰ کاراکتر داشته باشد.")
-    .max(10000, "متن باید حداکثر ۱۰۰۰۰ کاراکتر داشته باشد."),
+    .min(10, "The text must be at least 10 characters long.")
+    .max(10000, "The text must be at most 10000 characters long."),
 });
-
 
 type FormValues = {
   title: string;
@@ -50,19 +49,19 @@ export const CreateArticle: React.FC = () => {
   const onSubmit = (data: FormValues): void => {
     createArticle.mutate(data);
     form.reset();
-  };  
+  };
 
   return (
     <Container>
-      <div className="bg-slate-200 min-h-dvh grid grid-cols-8 gap-x-4 max-[768px]:grid-cols-1 px-5">
+      <div className="bg-gray-100 min-h-dvh grid grid-cols-8 gap-x-4 max-[768px]:grid-cols-1 px-5">
         <div className="grid col-span-1"></div>
-        <div className="pt-4 min-w-full col-span-5">
+        <div className="pt-4 min-w-full col-span-6">
           <div>
             <div className="flex flex-row justify-between items-center">
               <Link href="/">
-                <Button variant="error">بازگشت</Button>
+                <Button variant="primary">Back</Button>
               </Link>
-              <h2 className="text-lg font-bold">نوشتن مقاله جدید</h2>
+              <h2 className="text-lg font-bold">Write a New Article</h2>
             </div>
             <FormProvider {...form}>
               <form
@@ -75,7 +74,7 @@ export const CreateArticle: React.FC = () => {
                   render={({ field, fieldState }) => (
                     <div>
                       <Input
-                        placeholder="یک عنوان برای مقاله خود بنویسید (الزامی)"
+                        placeholder="Write a title for your article (required)"
                         {...field}
                       />
                       <p
@@ -108,40 +107,42 @@ export const CreateArticle: React.FC = () => {
                     </div>
                   )}
                 />
-                <div className="pt-10 pb-10">
+                <div className="pt-10 pb-10 self-center">
                   <Button
                     type="submit"
                     variant="primary"
-                    disabled={!form.formState.isDirty || !form.formState.isValid}
+                    disabled={
+                      !form.formState.isDirty || !form.formState.isValid
+                    }
                   >
-                    انتشار نوشته
+                    Publish Article
                   </Button>
                 </div>
               </form>
             </FormProvider>
           </div>
         </div>
-        <div className="flex flex-col flex-start col-span-1 pt-24 max-[768px]:pt-5 md:col-span-2">
+        {/* <div className="flex flex-col flex-start col-span-1 pt-24 max-[768px]:pt-5 md:col-span-2">
           <div className="flex flex-col justify-evenly">
             <div className="flex">
-              <h3 className="text-base font-medium">سطح دسترسی:</h3>
+              <h3 className="text-base font-medium">:Access Level</h3>
             </div>
             <div className="flex flex-col py-3">
               <div className="py-2">
-                <input name="access" type="radio" value="عمومی"></input>
-                <label className="px-3">عمومی</label>
+                <input name="access" type="radio" value="Public"></input>
+                <label className="px-3">Public</label>
               </div>
               <div className="py-2">
                 <input
                   name="access"
                   type="radio"
-                  value="فقط دنبال کنندگان"
+                  value="Followers Only"
                 ></input>
-                <label className="px-3">فقط دنبال کنندگان</label>
+                <label className="px-3">Followers Only</label>
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="grid col-span-1"></div>
     </Container>
