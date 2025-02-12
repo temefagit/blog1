@@ -6,6 +6,7 @@ import {
   ButtonHTMLAttributes,
 } from "react";
 
+
 type Props = PropsWithChildren<
   {
     variant?: "primary" | "error";
@@ -29,9 +30,10 @@ export const Button: React.FC<Props> = ({
 
   const buttonStyles: string = `${variants[variant]} rounded px-6 pb-2 pt-2.5 text-sm font-medium text-white mt:after:content-['ورود']`;
   const disbableButtonStyles: string =
-    "bg-zinc-500 rounded px-6 pb-2 pt-2.5 text-sm font-medium text-white opacity-50 cursor-not-allowed";
+    "bg-zinc-400 rounded px-6 pb-2 pt-2.5 text-sm font-medium opacity-50 cursor-not-allowed";
 
   console.log(useWatchHook("title"));
+  
 
   return (
     <button

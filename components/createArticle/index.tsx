@@ -19,6 +19,7 @@ const schema = z.object({
     .max(10000, "متن باید حداکثر ۱۰۰۰۰ کاراکتر داشته باشد."),
 });
 
+
 type FormValues = {
   title: string;
   body: string;
@@ -49,7 +50,7 @@ export const CreateArticle: React.FC = () => {
   const onSubmit = (data: FormValues): void => {
     createArticle.mutate(data);
     form.reset();
-  };
+  };  
 
   return (
     <Container>
@@ -111,7 +112,7 @@ export const CreateArticle: React.FC = () => {
                   <Button
                     type="submit"
                     variant="primary"
-                    disabled={form.formState.isSubmitting}
+                    disabled={!form.formState.isDirty || !form.formState.isValid}
                   >
                     انتشار نوشته
                   </Button>

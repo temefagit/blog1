@@ -9,7 +9,7 @@ export const useWatchHook = (fieldName: string): string => {
     ? useWatch({
         control: formControl?.control,
         name: fieldName,
-        defaultValue: "مقدار پیش فرض",
+        defaultValue: "Default Value",
       })
     : "";
 

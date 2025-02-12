@@ -1,6 +1,5 @@
 
 import { Container } from "@/common/container";
-import style from "./heroSection.module.css";
 import Image from "next/image";
 
 export const HeroSection: React.FC = () => {

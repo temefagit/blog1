@@ -2,7 +2,6 @@
 import { Button } from '@/common/button';
 import { Container } from '@/common/container';
 import Link from 'next/link';
-import style from './navbar.module.css';
 import Image from 'next/image';
 
 

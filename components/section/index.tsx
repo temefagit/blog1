@@ -1,7 +1,6 @@
 "use client";
 
 import { Comments } from "../comments/index";
-import style from "./section.module.css";
 import { useQuery } from "@tanstack/react-query";
 import { fetchArticles } from "@/models/articles/index";
 import { useState } from "react";

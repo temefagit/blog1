@@ -1,5 +1,4 @@
 "use client";
-import style from "./articles.module.css";
 import Image from "next/image";
 
 type Props = {
