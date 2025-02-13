@@ -1,8 +1,5 @@
 const config = {
-  baseURL:
-    process.env.NODE_ENV === "production"
-      ? `${VERCEL_GIT_COMMIT_REF}.vercel.app`
-      : "http://localhost:3000",
+  baseURL: `${VERCEL_GIT_COMMIT_REF}.vercel.app`,
 };
 
 export default config;
