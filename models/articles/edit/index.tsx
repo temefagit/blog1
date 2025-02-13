@@ -6,8 +6,7 @@ type UpdateArticleData = {
   body: string;
 };
 
-
 export const updateArticle = async (id: string, data: UpdateArticleData) => {
-  const url = `${config.baseURL}/posts/${id}`;
+  const url = `${config.baseURL}/api/posts/${id}`;
   await axios.put(url, data);
 };

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
+import config from "@/config"; // Import the config for baseURL
 
 type Props = {
   id: string;
@@ -18,7 +19,8 @@ export const Articles: React.FC<Props> = ({ id, title, body }) => {
 
   const deleteMutation = useMutation({
     mutationFn: async () => {
-      await axios.delete(`http://localhost:3001/posts/${id}`);
+      const url = `${config.baseURL}/api/posts/${id}`;
+      await axios.delete(url);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["articleList"] });
@@ -27,7 +29,8 @@ export const Articles: React.FC<Props> = ({ id, title, body }) => {
 
   const updateMutation = useMutation({
     mutationFn: async () => {
-      await axios.put(`http://localhost:3001/posts/${id}`, {
+      const url = `${config.baseURL}/api/posts/${id}`;
+      await axios.put(url, {
         title: editTitle,
         body: editBody,
       });
