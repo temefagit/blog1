@@ -88,18 +88,17 @@ export const Articles: React.FC<Props> = ({ id, title, body }) => {
               <div className="hidden md:flex space-x-4">
                 <button
                   onClick={() => setIsEditing(true)}
-                  className="text-xs text-blue-500 pl-5"
+                  className="text-sm font-semibold text-green-500 pl-3"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => deleteMutation.mutate()}
-                  className="text-xs text-red-500"
+                  className="text-sm font-semibold text-red-500"
                 >
                   Delete
                 </button>
               </div>
-              <p className="cursor-pointer text-xs pr-3">View</p>
             </div>
           </>
         )}
