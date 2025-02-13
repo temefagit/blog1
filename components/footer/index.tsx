@@ -13,7 +13,6 @@ export const Footer: React.FC = () => {
                 <li className="cursor-pointer hover:font-bold leading-8 ">Home</li>
                 <li className="cursor-pointer hover:font-bold leading-8 ">Articles</li>
                 <li className="cursor-pointer hover:font-bold leading-8 ">News</li>
-                <li className="cursor-pointer hover:font-bold leading-8 ">Writers' Guild</li>
               </ol>
             </div>
           </div>
