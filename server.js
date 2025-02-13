@@ -1,10 +1,12 @@
 const jsonServer = require('json-server');
+const path = require('path');
 const server = jsonServer.create();
-const router = jsonServer.router('api/db.json');
+const router = jsonServer.router(path.join(__dirname, 'api', 'db.json'));
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 
+// Error handling middleware
 server.use((err, req, res, next) => {
   console.error('Server error:', err);
   res.status(500).send('Internal Server Error');
