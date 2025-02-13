@@ -18,7 +18,7 @@ export const Navbar: React.FC = () => {
           </div>
           <div className="flex md:hidden lg:flex xl:flex mt:hidden">
             <Link href="/create">
-              <Button type="button" variant="primary">
+              <Button type="button" variant="secondary">
                 New Post
               </Button>
             </Link>
