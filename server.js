@@ -6,7 +6,6 @@ const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 
-// Error handling middleware
 server.use((err, req, res, next) => {
   console.error('Server error:', err);
   res.status(500).send('Internal Server Error');
