@@ -1,7 +1,7 @@
 const config = {
   baseURL:
     process.env.NODE_ENV === "production"
-      ? "https://your-vercel-project-url.vercel.app"
+      ? "blog-tobeginwith.vercel.app"
       : "http://localhost:3001",
 };
 
