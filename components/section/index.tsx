@@ -50,6 +50,7 @@ export const Section: React.FC = () => {
                         key={item.id}
                         title={item.title}
                         body={item.body}
+                        id={item.id}
                       />
                     ))}
               </div>

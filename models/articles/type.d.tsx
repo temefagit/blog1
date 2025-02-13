@@ -1,6 +1,5 @@
 export type FetchArticlesResponse = {
-    userId : number;
-    id: number;
+    id: string;
     title: string;
     body: string;
 }[]

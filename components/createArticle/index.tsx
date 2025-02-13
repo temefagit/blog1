@@ -37,7 +37,7 @@ export const CreateArticle: React.FC = () => {
   const createArticle = useMutation({
     mutationFn: async (data: FormValues) => {
       return await axios.post(
-        "https://jsonplaceholder.typicode.com/posts",
+        "http://localhost:3001/posts",
         data
       );
     },
