@@ -1,5 +1,5 @@
 const config = {
-  baseURL: `${VERCEL_GIT_COMMIT_REF}.vercel.app`,
+  baseURL: "https://blog-tobeginwith.vercel.app/",
 };
 
 export default config;
