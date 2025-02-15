@@ -4,7 +4,7 @@ import { Comments } from "../comments/index";
 import { useQuery } from "@tanstack/react-query";
 import { fetchArticles } from "@/models/articles/index";
 import { fetchComments } from "@/models/comments/index";
-import { useState } from "react";
+import { Key, useState } from "react";
 import { Articles } from "../articles";
 import { SkeletonArticle } from "../skeleton/articles";
 import { Container } from "@/common/container";
@@ -25,10 +25,6 @@ export const Section: React.FC = () => {
     enabled: !!pagination,
   });
 
-  // Limit the number of articles and comments to 30
-  const limitedArticles = articles?.slice(0, 20);
-  const limitedComments = comments?.slice(0, 30);
-
   return (
     <section className="bg-gray-100 min-h-screen w-full px-4 mt:px-2 pb-10">
       <div className="max-w-screen-2xl mx-auto">
@@ -45,14 +41,16 @@ export const Section: React.FC = () => {
                   ? Array.from({ length: 20 }, (_, idx) => (
                       <SkeletonArticle key={`loading-article-${idx}`} />
                     ))
-                  : limitedArticles?.map((item) => (
-                      <Articles
-                        key={item.id}
-                        title={item.title}
-                        body={item.body}
-                        id={item.id}
-                      />
-                    ))}
+                  : articles?.map(
+                      (item: { id: string; title: string; body: string }) => (
+                        <Articles
+                          key={item.id}
+                          title={item.title}
+                          body={item.body}
+                          id={item.id}
+                        />
+                      )
+                    )}
               </div>
             </div>
             <div className="grid col-span-1 items-start">
@@ -66,13 +64,15 @@ export const Section: React.FC = () => {
                   ? Array.from({ length: 20 }, (_, idx) => (
                       <SkeletonComment key={`loading-article-${idx}`} />
                     ))
-                  : limitedComments?.map((item) => (
-                      <Comments
-                        key={item.id}
-                        name={item.name}
-                        body={item.body}
-                      />
-                    ))}
+                  : comments?.map(
+                      (item: { id: string; name: string; body: string }) => (
+                        <Comments
+                          key={item.id}
+                          name={item.name}
+                          body={item.body}
+                        />
+                      )
+                    )}
               </div>
             </div>
           </div>
