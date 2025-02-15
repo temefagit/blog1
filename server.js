@@ -29,7 +29,7 @@ server.delete('/api/posts/:id', (req, res) => {
 server.use(router);
 
 server.use((err, req, res, next) => {
-  console.error('Server error:', err);
+  console.error('Server error:', err.stack);
   res.status(500).send('Internal Server Error');
 });
 
