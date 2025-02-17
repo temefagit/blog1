@@ -51,13 +51,13 @@ export const Articles: React.FC<Props> = ({ id, title, body }) => {
               className="text-sm font-bold p-2 border border-gray-300 rounded-lg w-full mb-2"
               value={editTitle}
               onChange={(e) => setEditTitle(e.target.value)}
-              placeholder="Edit title"
+              placeholder="Edit Title"
             />
             <textarea
               className="text-sm font-normal py-2 p-2 border border-gray-300 rounded-lg w-full mb-2"
               value={editBody}
               onChange={(e) => setEditBody(e.target.value)}
-              placeholder="Edit body"
+              placeholder="Edit Body"
               rows={4}
             />
             <div className="flex justify-end pt-2 space-x-2">
@@ -89,7 +89,7 @@ export const Articles: React.FC<Props> = ({ id, title, body }) => {
             ></Image>
             <p className="text-sm font-normal py-2 text-left">{body}</p>
             <div className="flex justify-start pt-2">
-              <div className="hidden md:flex space-x-4">
+              <div className="flex space-x-4">
                 <button
                   onClick={() => setIsEditing(true)}
                   className="text-sm font-semibold text-green-500 pl-3"
