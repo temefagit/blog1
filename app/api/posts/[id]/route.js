@@ -1,38 +1,40 @@
-import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-
-const filePath = path.join(process.cwd(), "api/db.json");
-
-export async function GET(req, { params }) {
-  const fileContents = fs.readFileSync(filePath, "utf8");
-  const data = JSON.parse(fileContents);
-  const post = data.posts.find((post) => post.id === params.id);
-  return NextResponse.json(post);
-}
+import { supabase } from '../../../lib/supabase';
 
 export async function PUT(req, { params }) {
+  const { id } = params;
   const { title, body } = await req.json();
-  const fileContents = fs.readFileSync(filePath, "utf8");
-  const data = JSON.parse(fileContents);
+  const { data, error } = await supabase
+    .from('posts')
+    .update({ title, body })
+    .eq('id', id);
 
-  const postIndex = data.posts.findIndex((post) => post.id === params.id);
-  if (postIndex > -1) {
-    data.posts[postIndex] = { ...data.posts[postIndex], title, body };
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-    return NextResponse.json(data.posts[postIndex]);
+  if (error) {
+    return new Response(JSON.stringify({ message: 'Internal Server Error', error }), { status: 500 });
   }
 
-  return NextResponse.json({ error: "Post not found" }, { status: 404 });
+  if (!data.length) {
+    return new Response(JSON.stringify({ message: 'Post not found' }), { status: 404 });
+  }
+
+  return new Response(JSON.stringify(data[0]), { status: 200 });
 }
 
+import { supabase } from '../../../lib/supabase';
+
 export async function DELETE(req, { params }) {
-  const fileContents = fs.readFileSync(filePath, "utf8");
-  const data = JSON.parse(fileContents);
+  const { id } = params;
+  const { data, error } = await supabase
+    .from('posts')
+    .delete()
+    .eq('id', id);
 
-  const newPosts = data.posts.filter((post) => post.id !== params.id);
-  data.posts = newPosts;
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  if (error) {
+    return new Response(JSON.stringify({ message: 'Internal Server Error', error }), { status: 500 });
+  }
 
-  return NextResponse.json({ success: true });
+  if (!data.length) {
+    return new Response(JSON.stringify({ message: 'Post not found' }), { status: 404 });
+  }
+
+  return new Response(JSON.stringify({ message: 'Post deleted' }), { status: 200 });
 }
