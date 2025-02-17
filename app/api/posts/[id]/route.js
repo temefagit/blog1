@@ -1,82 +1,40 @@
-import { supabase } from "@/lib/supabase";
+import { supabase } from '@/lib/supabase';
 
-export async function PUT(req, res, { params }) {
+export async function PUT(req, { params }) {
   const { id } = params;
-  const numericId = parseInt(id, 10);
+  const numericId = parseInt(id, 10); // Convert the id to a number
+  const { title, body } = await req.json();
+  const { data, error } = await supabase
+    .from('posts')
+    .update({ title, body })
+    .eq('id', numericId);
 
-  // Set CORS headers
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, OPTIONS"
-  );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-
-  // Handle preflight request
-  if (req.method === "OPTIONS") {
-    res.status(204).end();
-    return;
+  if (error) {
+    return new Response(JSON.stringify({ message: 'Internal Server Error', error }), { status: 500 });
   }
 
-  try {
-    const { title, body } = await req.json();
-    const { data, error } = await supabase
-      .from("posts")
-      .update({ title, body })
-      .eq("id", numericId);
-
-    if (error) {
-      res.status(500).json({ message: "Internal Server Error", error });
-      return;
-    }
-
-    if (!data.length) {
-      res.status(404).json({ message: "Post not found" });
-      return;
-    }
-
-    res.status(200).json(data[0]);
-  } catch (error) {
-    res.status(500).json({ message: "Internal Server Error", error });
+  if (!data.length) {
+    return new Response(JSON.stringify({ message: 'Post not found' }), { status: 404 });
   }
+
+  return new Response(JSON.stringify(data[0]), { status: 200 });
 }
 
-export async function DELETE(req, res, { params }) {
+export async function DELETE(req, { params }) {
   const { id } = params;
-  const numericId = parseInt(id, 10);
+  const numericId = parseInt(id, 10); // Convert the id to a number
+  const { data, error } = await supabase
+    .from('posts')
+    .delete()
+    .eq('id', numericId);
 
-  // Set CORS headers
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, OPTIONS"
-  );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-
-  // Handle preflight request
-  if (req.method === "OPTIONS") {
-    res.status(204).end();
-    return;
+  if (error) {
+    return new Response(JSON.stringify({ message: 'Internal Server Error', error }), { status: 500 });
   }
 
-  try {
-    const { data, error } = await supabase
-      .from("posts")
-      .delete()
-      .eq("id", numericId);
-
-    if (error) {
-      res.status(500).json({ message: "Internal Server Error", error });
-      return;
-    }
-
-    if (!data.length) {
-      res.status(404).json({ message: "Post not found" });
-      return;
-    }
-
-    res.status(200).json({ message: "Post deleted" });
-  } catch (error) {
-    res.status(500).json({ message: "Internal Server Error", error });
+  if (!data.length) {
+    return new Response(JSON.stringify({ message: 'Post not found' }), { status: 404 });
   }
+
+  return new Response(JSON.stringify({ message: 'Post deleted' }), { status: 200 });
 }
