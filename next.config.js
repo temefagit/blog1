@@ -8,7 +8,7 @@ const nextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://blog1-mmbv.vercel.app",
+            value: "https://blog1-tobeginwith.vercel.app",
           },
           {
             key: "Access-Control-Allow-Methods",
