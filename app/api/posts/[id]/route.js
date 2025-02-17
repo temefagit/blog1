@@ -1,10 +1,9 @@
 import { supabase } from "@/lib/supabase";
 
-export async function PUT(req, { params }) {
+export async function PUT(req, res, { params }) {
   const { id } = params;
   const numericId = parseInt(id, 10);
 
-  // Set CORS headers
   res.setHeader("Access-Control-Allow-Origin", "https://blog1-mmbv.vercel.app");
   res.setHeader(
     "Access-Control-Allow-Methods",
@@ -12,7 +11,6 @@ export async function PUT(req, { params }) {
   );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // Handle preflight request
   if (req.method === "OPTIONS") {
     res.status(204).end();
     return;
@@ -25,26 +23,20 @@ export async function PUT(req, { params }) {
     .eq("id", numericId);
 
   if (error) {
-    return new Response(
-      JSON.stringify({ message: "Internal Server Error", error }),
-      { status: 500 }
-    );
+    return res.status(500).json({ message: "Internal Server Error", error });
   }
 
   if (!data.length) {
-    return new Response(JSON.stringify({ message: "Post not found" }), {
-      status: 404,
-    });
+    return res.status(404).json({ message: "Post not found" });
   }
 
-  return new Response(JSON.stringify(data[0]), { status: 200 });
+  return res.status(200).json(data[0]);
 }
 
-export async function DELETE(req, { params }) {
+export async function DELETE(req, res, { params }) {
   const { id } = params;
   const numericId = parseInt(id, 10);
 
-  // Set CORS headers
   res.setHeader("Access-Control-Allow-Origin", "https://blog1-mmbv.vercel.app");
   res.setHeader(
     "Access-Control-Allow-Methods",
@@ -52,7 +44,6 @@ export async function DELETE(req, { params }) {
   );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // Handle preflight request
   if (req.method === "OPTIONS") {
     res.status(204).end();
     return;
@@ -64,19 +55,12 @@ export async function DELETE(req, { params }) {
     .eq("id", numericId);
 
   if (error) {
-    return new Response(
-      JSON.stringify({ message: "Internal Server Error", error }),
-      { status: 500 }
-    );
+    return res.status(500).json({ message: "Internal Server Error", error });
   }
 
   if (!data.length) {
-    return new Response(JSON.stringify({ message: "Post not found" }), {
-      status: 404,
-    });
+    return res.status(404).json({ message: "Post not found" });
   }
 
-  return new Response(JSON.stringify({ message: "Post deleted" }), {
-    status: 200,
-  });
+  return res.status(200).json({ message: "Post deleted" });
 }
