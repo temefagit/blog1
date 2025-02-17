@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
         <div className="hidden md:flex space-x-2 items-baseline">
           <div className="hidden md:flex space-x-2 items-baseline">
             <a
-              href="#home"
+              href="/"
               className="text-gray-700 hover:text-blue-500 font-semibold"
             >
               Home

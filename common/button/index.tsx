@@ -28,7 +28,7 @@ export const Button: React.FC<Props> = ({
     error: "bg-red-500 hover:bg-red-600 hover:shadow-red-300/50",
   };
 
-  const buttonStyles: string = `${variants[variant]} rounded px-6 pb-2 pt-2.5 text-sm font-medium text-white mt:after:content-['ورود']`;
+  const buttonStyles: string = `${variants[variant]} rounded px-6 pb-2 pt-2.5 text-sm font-medium text-white`;
   const disbableButtonStyles: string =
     "bg-zinc-400 rounded px-6 pb-2 pt-2.5 text-sm font-medium opacity-50 cursor-not-allowed";
 
