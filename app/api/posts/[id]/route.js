@@ -5,15 +5,12 @@ export async function PUT(req, res, { params }) {
   const numericId = parseInt(id, 10);
 
   // Set CORS headers
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://blog1-tobeginwith.vercel.app/api/posts"
-  );
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "PUT, DELETE, GET, POST, OPTIONS"
+    "GET, POST, PUT, DELETE, OPTIONS"
   );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
   // Handle preflight request
   if (req.method === "OPTIONS") {
@@ -49,15 +46,12 @@ export async function DELETE(req, res, { params }) {
   const numericId = parseInt(id, 10);
 
   // Set CORS headers
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://blog1-tobeginwith.vercel.app/api/posts"
-  );
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "PUT, DELETE, GET, POST, OPTIONS"
+    "GET, POST, PUT, DELETE, OPTIONS"
   );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
   // Handle preflight request
   if (req.method === "OPTIONS") {
