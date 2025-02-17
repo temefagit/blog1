@@ -115,7 +115,7 @@ const Navbar: React.FC = () => {
             </svg>
           </button>
           <a
-            href="#home"
+            href="/"
             className="block text-gray-700 hover:text-blue-500 mb-4"
           >
             Home

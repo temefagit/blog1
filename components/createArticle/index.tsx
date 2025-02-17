@@ -52,7 +52,7 @@ export const CreateArticle: React.FC = () => {
 
   return (
     <Container>
-      <div className="bg-gray-100 min-h-dvh grid grid-cols-8 gap-x-4 max-[768px]:grid-cols-1 px-5">
+      <div dir="ltr" className="bg-gray-100 min-h-dvh grid grid-cols-8 gap-x-4 max-[768px]:grid-cols-1 px-5">
         <div className="grid col-span-1"></div>
         <div className="pt-4 min-w-full col-span-6">
           <div>
