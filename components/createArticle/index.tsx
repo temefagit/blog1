@@ -10,7 +10,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/common/input";
 import { TextArea } from "@/common/textarea";
-import config from "@/config"; // Import the config for baseURL
+import config from "@/config";
 
 const schema = z.object({
   title: z.string().min(1, "Title is required."),

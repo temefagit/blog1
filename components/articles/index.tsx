@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
-import config from "@/config"; // Import the config for baseURL
+import config from "@/config";
 
 type Props = {
   id: string;
