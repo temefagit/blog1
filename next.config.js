@@ -11,7 +11,7 @@ const nextConfig = {
             value: "https://blog1-tobeginwith.vercel.app",
           },
           {
-            key: "Access-Control-Allow-Methods",
+            key: "Access-Control-Request-Method",
             value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
           },
           {

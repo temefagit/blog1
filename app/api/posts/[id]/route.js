@@ -10,7 +10,7 @@ export async function PUT(req, res, { params }) {
     "https://blog1-tobeginwith.vercel.app"
   );
   res.setHeader(
-    "Access-Control-Allow-Methods",
+    "Access-Control-Request-Method",
     "PUT, DELETE, GET, POST, OPTIONS"
   );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -54,7 +54,7 @@ export async function DELETE(req, res, { params }) {
     "https://blog1-tobeginwith.vercel.app"
   );
   res.setHeader(
-    "Access-Control-Allow-Methods",
+    "Access-Control-Request-Method",
     "PUT, DELETE, GET, POST, OPTIONS"
   );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
