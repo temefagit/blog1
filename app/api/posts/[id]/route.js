@@ -44,8 +44,6 @@ export async function PUT(req, res, { params }) {
   }
 }
 
-import { supabase } from "@/lib/supabase";
-
 export async function DELETE(req, res, { params }) {
   const { id } = params;
   const numericId = parseInt(id, 10);
