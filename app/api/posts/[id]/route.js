@@ -10,7 +10,7 @@ export async function PUT(req, res, { params }) {
     "https://blog1-tobeginwith.vercel.app"
   );
   res.setHeader(
-    "Access-Control-Request-Method",
+    "Access-Control-Allow-Methods",
     "PUT, DELETE, GET, POST, OPTIONS"
   );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -44,6 +44,8 @@ export async function PUT(req, res, { params }) {
   }
 }
 
+import { supabase } from "@/lib/supabase";
+
 export async function DELETE(req, res, { params }) {
   const { id } = params;
   const numericId = parseInt(id, 10);
@@ -54,7 +56,7 @@ export async function DELETE(req, res, { params }) {
     "https://blog1-tobeginwith.vercel.app"
   );
   res.setHeader(
-    "Access-Control-Request-Method",
+    "Access-Control-Allow-Methods",
     "PUT, DELETE, GET, POST, OPTIONS"
   );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
