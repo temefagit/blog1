@@ -1,14 +1,14 @@
 "use client";
 
-import { Comments } from "../comments/index";
 import { useQuery } from "@tanstack/react-query";
-import { fetchArticles } from "@/models/articles/index";
+import { fetchArticles } from "@/models/articles/index"; 
 import { fetchComments } from "@/models/comments/index";
-import { Key, useState } from "react";
+import { useState } from "react";
 import { Articles } from "../articles";
 import { SkeletonArticle } from "../skeleton/articles";
 import { Container } from "@/common/container";
 import { SkeletonComment } from "../skeleton/comments";
+import { Comments } from "../comments";
 
 export const Section: React.FC = () => {
   const [pagination, setPagination] = useState(1);
@@ -17,7 +17,7 @@ export const Section: React.FC = () => {
     queryKey: ["articleList", pagination],
     queryFn: fetchArticles,
     enabled: !!pagination,
-  });
+  });  
 
   const { data: comments, isFetching: CommentsFetching } = useQuery({
     queryKey: ["commentList", pagination],

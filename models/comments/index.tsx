@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const fetchComments = async () => {
-  const url = "/api/comments";
-  const response = await axios.get(url);
+  const response = await axios.get("/api/comments");
   return response.data;
 };

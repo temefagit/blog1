@@ -12,6 +12,7 @@ type Props = {
 };
 
 export const Articles: React.FC<Props> = ({ id, title, body }) => {
+  console.log(id, title, body);
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(title);
   const [editBody, setEditBody] = useState(body);

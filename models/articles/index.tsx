@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const fetchArticles = async () => {
-  const url = "/api/posts";
-  const response = await axios.get(url);
+  const response = await axios.get("/api/posts");
   return response.data;
 };

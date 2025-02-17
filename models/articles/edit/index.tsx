@@ -1,12 +1,17 @@
-import config from "@/config";
-import axios from "axios";
+import { supabase } from "@/lib/supabase";
 
-type UpdateArticleData = {
-  title: string;
-  body: string;
-};
+export const updateArticle = async (
+  id: number,
+  data: { title: string; body: string }
+) => {
+  const { data: updatedData, error } = await supabase
+    .from("posts")
+    .update(data)
+    .eq("id", id);
 
-export const updateArticle = async (id: string, data: UpdateArticleData) => {
-  const url = `${config.baseURL}/api/posts/${id}`;
-  await axios.put(url, data);
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return updatedData;
 };

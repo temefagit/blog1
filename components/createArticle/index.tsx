@@ -37,11 +37,14 @@ export const CreateArticle: React.FC = () => {
 
   const createArticle = useMutation({
     mutationFn: async (data: FormValues) => {
-      const url = `${config.baseURL}/api/posts`;
+      const url = `/api/posts`;
       return await axios.post(url, data);
     },
-    onSuccess: () => {
-      console.log("The New Article Successfully Created.");
+    onSuccess: (data) => {
+      console.log("The New Article Successfully Created.", data);
+    },
+    onError: (error) => {
+      console.error("Error creating article:", error);
     },
   });
 
@@ -52,7 +55,10 @@ export const CreateArticle: React.FC = () => {
 
   return (
     <Container>
-      <div dir="ltr" className="bg-gray-100 min-h-dvh grid grid-cols-8 gap-x-4 max-[768px]:grid-cols-1 px-5">
+      <div
+        dir="ltr"
+        className="bg-gray-100 min-h-dvh grid grid-cols-8 gap-x-4 max-[768px]:grid-cols-1 px-5"
+      >
         <div className="grid col-span-1"></div>
         <div className="pt-4 min-w-full col-span-6">
           <div>
@@ -121,29 +127,8 @@ export const CreateArticle: React.FC = () => {
             </FormProvider>
           </div>
         </div>
-        {/* <div className="flex flex-col flex-start col-span-1 pt-24 max-[768px]:pt-5 md:col-span-2">
-          <div className="flex flex-col justify-evenly">
-            <div className="flex">
-              <h3 className="text-base font-medium">:Access Level</h3>
-            </div>
-            <div className="flex flex-col py-3">
-              <div className="py-2">
-                <input name="access" type="radio" value="Public"></input>
-                <label className="px-3">Public</label>
-              </div>
-              <div className="py-2">
-                <input
-                  name="access"
-                  type="radio"
-                  value="Followers Only"
-                ></input>
-                <label className="px-3">Followers Only</label>
-              </div>
-            </div>
-          </div>
-        </div> */}
+        <div className="grid col-span-1"></div>
       </div>
-      <div className="grid col-span-1"></div>
     </Container>
   );
 };
