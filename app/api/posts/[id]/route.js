@@ -7,7 +7,7 @@ export async function PUT(req, res, { params }) {
   // Set CORS headers
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://blog1-tobeginwith.vercel.app"
+    "https://blog1-tobeginwith.vercel.app/api/posts"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
@@ -51,7 +51,7 @@ export async function DELETE(req, res, { params }) {
   // Set CORS headers
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://blog1-tobeginwith.vercel.app"
+    "https://blog1-tobeginwith.vercel.app/api/posts"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
