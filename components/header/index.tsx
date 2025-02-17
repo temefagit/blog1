@@ -94,7 +94,7 @@ const Navbar: React.FC = () => {
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out`}
       >
-        <div className="fixed left-0 top-0 w-64 h-full bg-white shadow-md p-4">
+        <div className="fixed left-0 top-0 w-52 h-full bg-white shadow-md p-4">
           <button
             onClick={closeMenu}
             className="mb-6 text-gray-700 focus:outline-none"
