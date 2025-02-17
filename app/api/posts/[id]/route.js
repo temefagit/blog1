@@ -1,52 +1,69 @@
 import { supabase } from "@/lib/supabase";
 
-export async function PUT(req, { params }) {
-  const { id } = params;
+export async function handler(req, res) {
+  const { id } = req.query;
   const numericId = parseInt(id, 10);
-  const { title, body } = await req.json();
-  const { data, error } = await supabase
-    .from("posts")
-    .update({ title, body })
-    .eq("id", numericId);
 
-  if (error) {
-    return new Response(
-      JSON.stringify({ message: "Internal Server Error", error }),
-      { status: 500 }
-    );
+  // Set CORS headers
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://blog1-tobeginwith.vercel.app"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "PUT, DELETE, GET, POST, OPTIONS"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  // Handle preflight request
+  if (req.method === "OPTIONS") {
+    res.status(204).end();
+    return;
   }
 
-  if (!data.length) {
-    return new Response(JSON.stringify({ message: "Post not found" }), {
-      status: 404,
-    });
-  }
+  try {
+    if (req.method === "PUT") {
+      const { title, body } = await req.json();
+      const { data, error } = await supabase
+        .from("posts")
+        .update({ title, body })
+        .eq("id", numericId);
 
-  return new Response(JSON.stringify(data[0]), { status: 200 });
+      if (error) {
+        res.status(500).json({ message: "Internal Server Error", error });
+        return;
+      }
+
+      if (!data.length) {
+        res.status(404).json({ message: "Post not found" });
+        return;
+      }
+
+      res.status(200).json(data[0]);
+    } else if (req.method === "DELETE") {
+      const { data, error } = await supabase
+        .from("posts")
+        .delete()
+        .eq("id", numericId);
+
+      if (error) {
+        res.status(500).json({ message: "Internal Server Error", error });
+        return;
+      }
+
+      if (!data.length) {
+        res.status(404).json({ message: "Post not found" });
+        return;
+      }
+
+      res.status(200).json({ message: "Post deleted" });
+    } else {
+      res.setHeader("Allow", ["PUT", "DELETE"]);
+      res.status(405).end(`Method ${req.method} Not Allowed`);
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error", error });
+  }
 }
 
-export async function DELETE(req, { params }) {
-  const { id } = params;
-  const numericId = parseInt(id, 10);
-  const { data, error } = await supabase
-    .from("posts")
-    .delete()
-    .eq("id", numericId);
-
-  if (error) {
-    return new Response(
-      JSON.stringify({ message: "Internal Server Error", error }),
-      { status: 500 }
-    );
-  }
-
-  if (!data.length) {
-    return new Response(JSON.stringify({ message: "Post not found" }), {
-      status: 404,
-    });
-  }
-
-  return new Response(JSON.stringify({ message: "Post deleted" }), {
-    status: 200,
-  });
-}
+export default handler;
