@@ -4,7 +4,6 @@ export async function GET(req, { params }) {
   const { id } = params;
   const numericId = parseInt(id, 10);
 
-  // Handle preflight request
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 204 });
   }
