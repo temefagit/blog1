@@ -19,9 +19,11 @@ const Navbar: React.FC = () => {
     <nav dir="ltr" className="bg-white shadow-md relative">
       <div className="mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
-          <div className="flex">
-            <img src="/images/logo.png" alt="Logo" className="h-9 w-9 mr-2" />
-            <span className="text-xl font-bold self-end pr-2">Blog</span>
+          <div>
+            <Link href="/" className="flex">
+              <img src="/images/logo.png" alt="Logo" className="h-9 w-9 mr-2" />
+              <span className="text-xl font-bold self-end pr-2">Blog</span>
+            </Link>
           </div>
           <div className="hidden md:flex space-x-6 items-baseline pl-8 pt-3">
             <a
