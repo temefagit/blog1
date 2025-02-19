@@ -17,14 +17,13 @@ const Navbar: React.FC = () => {
 
   return (
     <nav dir="ltr" className="bg-white shadow-md relative">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div className="mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
-          <img src="/images/logo.png" alt="Logo" className="h-9 w-9 mr-2" />
-          <span className="text-xl font-bold self-end pr-2">Blog</span>
-        </div>
-
-        <div className="hidden md:flex space-x-2 items-baseline">
-          <div className="hidden md:flex space-x-2 items-baseline">
+          <div className="flex">
+            <img src="/images/logo.png" alt="Logo" className="h-9 w-9 mr-2" />
+            <span className="text-xl font-bold self-end pr-2">Blog</span>
+          </div>
+          <div className="hidden md:flex space-x-6 items-baseline pl-8 pt-3">
             <a
               href="/"
               className="text-gray-700 hover:text-blue-500 font-semibold"
@@ -50,6 +49,9 @@ const Navbar: React.FC = () => {
               Contact
             </a>
           </div>
+        </div>
+
+        <div className="hidden md:flex space-x-2 items-baseline">
           <Link href="./create">
             <Button
               variant="secondary"
@@ -114,10 +116,7 @@ const Navbar: React.FC = () => {
               />
             </svg>
           </button>
-          <a
-            href="/"
-            className="block text-gray-700 hover:text-blue-500 mb-4"
-          >
+          <a href="/" className="block text-gray-700 hover:text-blue-500 mb-4">
             Home
           </a>
           <a
