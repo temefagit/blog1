@@ -31,9 +31,6 @@ export const Button: React.FC<Props> = ({
   const buttonStyles: string = `${variants[variant]} rounded px-6 pb-2 pt-2.5 text-sm font-medium text-white`;
   const disbableButtonStyles: string =
     "bg-zinc-400 rounded px-6 pb-2 pt-2.5 text-sm font-medium opacity-50 cursor-not-allowed";
-
-  console.log(useWatchHook("title"));
-
   return (
     <button
       {...props}

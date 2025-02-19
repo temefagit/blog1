@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import config from "@/config";
+import { toast } from "react-toastify";
 
 type Props = {
   id: string;
@@ -12,7 +13,6 @@ type Props = {
 };
 
 export const Articles: React.FC<Props> = ({ id, title, body }) => {
-  console.log(id, title, body);
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(title);
   const [editBody, setEditBody] = useState(body);
@@ -25,6 +25,11 @@ export const Articles: React.FC<Props> = ({ id, title, body }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["articleList"] });
+      toast.success("The Article Successfully Deleted");
+    },
+    onError: (error) => {
+      toast.error(`Error: ${error.message}`);
+      console.error("Error deleting article:", error);
     },
   });
 
@@ -39,12 +44,17 @@ export const Articles: React.FC<Props> = ({ id, title, body }) => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["articleList"] });
       setIsEditing(false);
+      toast.success("The Article Successfully Updated");
+    },
+    onError: (error) => {
+      toast.error(`Error: ${error.message}`);
+      console.error("Error updating article:", error);
     },
   });
 
   return (
     <div className="bg-white flex items-center justify-center rounded-lg shadow-md font-roboto">
-      <div className="flex flex-col pl-6 p-4 w-full">
+      <div className="flex flex-col pl-6 p-4 w-full self-start">
         {isEditing ? (
           <>
             <input

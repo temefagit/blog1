@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { Button } from "@/common/button";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
@@ -10,7 +11,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/common/input";
 import { TextArea } from "@/common/textarea";
-import config from "@/config";
+import { toast } from "react-toastify";
 
 const schema = z.object({
   title: z.string().min(1, "Title is required."),
@@ -25,7 +26,7 @@ type FormValues = {
   body: string;
 };
 
-export const CreateArticle: React.FC = () => {
+export const CreateArticle = () => {
   const form = useForm<FormValues>({
     defaultValues: {
       title: "",
@@ -41,9 +42,11 @@ export const CreateArticle: React.FC = () => {
       return await axios.post(url, data);
     },
     onSuccess: (data) => {
-      console.log("The New Article Successfully Created.", data);
+      toast.success("The New Article Successfully Created");
+      form.reset();
     },
     onError: (error) => {
+      toast.error(`Error: ${error.message}`);
       console.error("Error creating article:", error);
     },
   });
@@ -113,13 +116,7 @@ export const CreateArticle: React.FC = () => {
                   )}
                 />
                 <div className="pt-10 pb-10 self-center">
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    disabled={
-                      !form.formState.isDirty || !form.formState.isValid
-                    }
-                  >
+                  <Button type="submit" variant="primary">
                     Publish Article
                   </Button>
                 </div>

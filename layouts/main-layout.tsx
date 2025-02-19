@@ -1,6 +1,9 @@
 import { ReactNode } from "react";
 import { Footer } from "../components/footer";
 import Navbar from "@/components/header";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import styles from "./style.module.css";
 
 interface Props {
   children: ReactNode;
@@ -15,6 +18,7 @@ export const MainLayout: React.FC<Props> = ({ children }) => {
       <Navbar />
       <main style={layoutStyle}>{children}</main>
       <Footer />
+      <ToastContainer toastClassName={styles.toast} />
     </div>
   );
 };
