@@ -31,7 +31,7 @@ export const Section: React.FC = () => {
         <Container>
           <div className="grid grid-cols-4 gap-2 mt:grid-cols-1 items-start">
             <div className="grid col-span-3 items-start">
-              <div className="border-b border-gray-300">
+              <div className="border-b border-gray-300 mt:grid-cols-1 mt:mx-4">
                 <h2 className="font-bold flex flex-row pt-6 pb-6 pr-4 justify-self-end">
                   Latest Articles
                 </h2>
